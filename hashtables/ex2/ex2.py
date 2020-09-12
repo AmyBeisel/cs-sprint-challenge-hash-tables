@@ -21,7 +21,12 @@ def reconstruct_trip(tickets, length):
     route.append(cache["NONE"])
     final_destination = cache["NONE"]
 
-    
+    while final_destination != "NONE":
+        if final_destination == "NONE":
+            continue
+        else:
+            route.append(cache[final_destination])
+            final_destination = cache[final_destination]
     
 
     return route
