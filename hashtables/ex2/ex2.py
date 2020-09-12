@@ -9,6 +9,19 @@ def reconstruct_trip(tickets, length):
     """
     YOUR CODE HERE
     """
-    # Your code here
+    #set the variables
+    ##hash table dictionary
+    cache = {}
+    # route list
+    route = []
+
+    for i in tickets:
+        cache[i.source] = i.destination
+
+    route.append(cache["NONE"])
+    final_destination = cache["NONE"]
+
+    
+    
 
     return route
