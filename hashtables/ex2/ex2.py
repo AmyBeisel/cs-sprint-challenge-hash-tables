@@ -12,21 +12,22 @@ def reconstruct_trip(tickets, length):
     #set the variables
     ##hash table dictionary
     cache = {}
-    # route list
+    # create an empty list in which we will save the airports
     route = []
 
-    #starting destination
-    for i in tickets:
-        cache[i.source] = i.destination
+    ## hash each ticket such that source is the key and destination is value
+    for ticket in tickets:
+        cache[ticket.source] = ticket.destination
 
-    #get the tickets for first flights
+    # The first flight is the one that has source=None
     route.append(cache["NONE"])
-    #finial flight
+    #finial flight  
     final_flight = cache["NONE"]
 
-    #if final flight not equal to NONE 
+    #add in route each flight 
+    #
     while final_flight != "NONE":
-        
+        #is it the first flight? If so, move on
         if final_flight == "NONE":
             continue
         else:
@@ -35,3 +36,18 @@ def reconstruct_trip(tickets, length):
     
 
     return route
+
+tickets = [
+    Ticket("PIT", "ORD" ),
+    Ticket("XNA", "CID" ),
+    Ticket("SFO", "BHM" ),
+    Ticket("FLG", "XNA" ),
+    Ticket("NONE", "LAX"),
+    Ticket("LAX", "SFO" ),
+    Ticket("CID", "SLC" ),
+    Ticket("ORD", "NONE"),
+    Ticket("SLC", "PIT" ),
+    Ticket("BHM", "FLG" )
+]
+
+print(reconstruct_trip(tickets, 10))
